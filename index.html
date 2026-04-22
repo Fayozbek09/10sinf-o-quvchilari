@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="161-Maktab 10A sinf o'quvchilar portali — ustozlar, o'quvchilar va e'lonlar" />
+  <title>161-Maktab | 10A Sinf</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body>
+
+  <!-- LANDING OVERLAY -->
+  <div id="landing" class="landing-overlay">
+    <canvas id="particleCanvas" class="landing-particles"></canvas>
+    <div class="landing-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="orb orb-4"></div>
+      <div class="grid-lines"></div>
+    </div>
+    <div class="landing-content">
+      <div class="landing-badge">
+        <span class="badge-dot"></span>
+        Toshkent sh. | Yashnabod tumani
+      </div>
+      <h1 class="landing-title">161<span>-Maktab</span></h1>
+      <p class="landing-sub">10A Sinf — O'quvchilar Wep Page</p>
+      <div class="landing-divider"></div>
+      <button class="btn-primary btn-glow" id="enterBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+          <path d="M13 7l5 5m0 0l-5 5m5-5H6" />
+        </svg>
+        Kirish
+      </button>
+      <div class="landing-choices" id="landingChoices">
+        <button class="choice-btn" id="guestBtn">
+          <span class="choice-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+              <path
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+          </span>
+          Saytni ko'rish
+        </button>
+        <button class="choice-btn admin-choice" id="adminChoiceBtn">
+          <span class="choice-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path
+                d="M12 15v2m-6 4h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2zm10-10V7a4 4 0 0 0-8 0v4h8z" />
+            </svg>
+          </span>
+          Admin login
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN LOGIN MODAL -->
+  <div id="adminModal" class="modal-overlay hidden">
+    <div class="modal-box">
+      <button class="modal-close" id="closeModal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6 6 18M6 6l12 12" />
+        </svg>
+      </button>
+      <div class="modal-header-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path
+            d="M12 15v2m-6 4h12a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2zm10-10V7a4 4 0 0 0-8 0v4h8z" />
+        </svg>
+      </div>
+      <h2 class="modal-title">Admin Panel</h2>
+      <p class="modal-sub">Faqat administrator uchun</p>
+      <div class="form-group">
+        <label>Foydalanuvchi nomi</label>
+        <div class="input-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="input-icon">
+            <path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0zM4.501 20.118a7.5 7.5 0 0 1 14.998 0" />
+          </svg>
+          <input type="text" id="adminUser" placeholder="username" autocomplete="off" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Parol</label>
+        <div class="input-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="input-icon">
+            <path
+              d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25z" />
+          </svg>
+          <input type="password" id="adminPass" placeholder="password" autocomplete="off" />
+        </div>
+      </div>
+      <div class="login-error hidden" id="loginError">Noto'g'ri ma'lumotlar</div>
+      <button class="btn-primary full-width btn-glow" id="loginBtn">Kirish</button>
+    </div>
+  </div>
+
+  <!-- MAIN APP -->
+  <div id="app" class="app hidden">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-mark">
+          <span>161</span>
+          <div class="brand-pulse"></div>
+        </div>
+        <div class="brand-text">
+          <span class="brand-school">Maktab</span>
+          <span class="brand-class">10A Sinf</span>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active" data-section="teachers">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path
+              d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+          </svg>
+          <span>Ustozlar</span>
+          <div class="nav-indicator"></div>
+        </a>
+        <a href="#" class="nav-item" data-section="students">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path
+              d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0z" />
+          </svg>
+          <span>O'quvchilar</span>
+          <span class="nav-count" id="studentNavCount">0</span>
+          <div class="nav-indicator"></div>
+        </a>
+        <a href="#" class="nav-item" data-section="announcements">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path
+              d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 1 1 0-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783A4.502 4.502 0 0 0 19.5 12m-9.16 3.84c.26-.988.4-2.02.4-3.084 0-1.064-.14-2.096-.4-3.084m0 6.168a22.502 22.502 0 0 1 0-6.168m0 6.168A22.5 22.5 0 0 0 19.5 12m0 0a22.5 22.5 0 0 0-9.16-9.84M19.5 12H21" />
+          </svg>
+          <span>E'lonlar</span>
+          <div class="nav-indicator"></div>
+        </a>
+        <a href="#" class="nav-item" data-section="gallery">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path
+              d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+          </svg>
+          <span>Galereya</span>
+          <div class="nav-indicator"></div>
+        </a>
+        <a href="#" class="nav-item" data-section="schedule">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path
+              d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+          </svg>
+          <span>Dars jadvali</span>
+          <div class="nav-indicator"></div>
+        </a>
+        <a href="#" class="nav-item" data-section="comments">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+          </svg>
+          <span>Izohlar</span>
+          <span class="nav-count" id="commentsNavCount">0</span>
+          <div class="nav-indicator"></div>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-badge" id="userBadge">
+          <div class="user-avatar-mini">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0zM4.501 20.118a7.5 7.5 0 0 1 14.998 0" />
+            </svg>
+          </div>
+          <div class="user-info">
+            <span id="userLabel">Mehmon</span>
+            <div class="user-dot guest" id="userDotEl"></div>
+          </div>
+        </div>
+        <button class="logout-btn hidden" id="logoutBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path
+              d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
+          </svg>
+          Chiqish
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- TOP BAR -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="menu-toggle" id="menuToggle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 12h18M3 6h18M3 18h18" />
+            </svg>
+          </button>
+          <h2 class="page-title" id="pageTitle">Ustozlar</h2>
+        </div>
+        <div class="topbar-right">
+          <div class="search-wrap hidden" id="searchWrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607z" />
+            </svg>
+            <input type="text" id="searchInput" placeholder="Qidirish..." />
+          </div>
+          <button class="topbar-btn theme-toggle" id="themeToggle" title="Rejimni almashtirish">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="sun-icon">
+              <path
+                d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="moon-icon">
+              <path
+                d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+            </svg>
+          </button>
+          <button class="add-btn hidden" id="addBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+            Qo'shish
+          </button>
+        </div>
+      </header>
+
+      <!-- SECTIONS -->
+      <div class="content-area" id="contentArea">
+
+        <!-- TEACHERS SECTION -->
+        <section class="section active" id="section-teachers">
+
+          <!-- DIRECTOR HERO -->
+          <div class="director-hero" id="directorHero">
+            <div class="dir-glow"></div>
+            <div class="dir-sparkles"></div>
+            <div class="dir-pattern"></div>
+            <div class="dir-inner">
+              <div class="dir-crown-badge">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14">
+                  <path
+                    d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5z" />
+                </svg>
+                Maktab Direktori
+              </div>
+              <div class="dir-avatar-wrap">
+                <div class="dir-avatar" id="dirAvatar">
+                  <img src="image elon/photo_2026-04-15_01-58-04.jpg" alt="Direktor" />
+                </div>
+                <div class="dir-ring"></div>
+                <div class="dir-ring dir-ring-2"></div>
+                <div class="dir-ring dir-ring-3"></div>
+              </div>
+              <div class="dir-name">Egamberdiyeva Gulmira Uktambekovna</div>
+              <div class="dir-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16">
+                  <path
+                    d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                </svg>
+                161-Maktab Direktori
+              </div>
+              <div class="dir-divider"></div>
+            </div>
+          </div>
+
+          <!-- TEACHERS HEADING -->
+          <div class="teachers-section-header">
+            <div class="tsh-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path
+                  d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+              </svg>
+            </div>
+            <div class="tsh-text">
+              <h3>O'qituvchilar</h3>
+              <p>10A sinf fanga o'qituvchilari</p>
+            </div>
+            <div class="tsh-count" id="teacherCount">0</div>
+          </div>
+
+          <div class="grid" id="teachersGrid"></div>
+          <div class="empty-state hidden" id="teachersEmpty">
+            <div class="empty-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <path
+                  d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+              </svg>
+            </div>
+            <p>Ustozlar hali qo'shilmagan</p>
+          </div>
+        </section>
+
+        <!-- STUDENTS SECTION -->
+        <section class="section" id="section-students">
+          <!-- CLASS TEACHER HERO (PREMIUM) -->
+          <div class="ct-hero-premium hidden" id="classTeacherHero">
+            <!-- Decorative layers -->
+            <div class="ct-bg-glow"></div>
+            <div class="ct-bg-grid"></div>
+            <div class="ct-bg-orbs">
+              <div class="ct-orb ct-orb-1"></div>
+              <div class="ct-orb ct-orb-2"></div>
+              <div class="ct-orb ct-orb-3"></div>
+            </div>
+
+            <div class="ct-premium-inner">
+              <!-- LEFT: Badge + Avatar -->
+              <div class="ct-premium-left">
+                <div class="ct-badge-label">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="13" height="13">
+                    <path d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5z" />
+                  </svg>
+                  Sinf Rahbari
+                </div>
+                <div class="ct-avatar-premium-wrap">
+                  <div class="ct-avatar-premium" id="ctAvatar">
+                    <div class="ct-avatar-placeholder">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0zM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="ct-avatar-ring ct-ring-gold"></div>
+                  <div class="ct-avatar-ring ct-ring-blue"></div>
+                  <div class="ct-avatar-ring ct-ring-outer"></div>
+                  <div class="ct-avatar-dot ct-dot-1"></div>
+                  <div class="ct-avatar-dot ct-dot-2"></div>
+                  <div class="ct-avatar-dot ct-dot-3"></div>
+                </div>
+              </div>
+
+              <!-- RIGHT: Info -->
+              <div class="ct-premium-right">
+                <div class="ct-school-tag">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="13" height="13">
+                    <path d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+                  </svg>
+                  161-Maktab · 10A Sinf
+                </div>
+                <h2 class="ct-premium-name" id="ctName">—</h2>
+                <div class="ct-subject-pill" id="ctSubject">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="13" height="13">
+                    <path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+                  </svg>
+                  <span id="ctSubjectText">—</span>
+                </div>
+                <div class="ct-info-chips">
+                </div>
+                <button class="ct-edit-premium hidden" id="ctEditBtn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14">
+                    <path d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931zm0 0L19.5 7.125" />
+                  </svg>
+                  Ma'lumotlarni tahrirlash
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- STUDENT COUNT BAR -->
+          <div class="students-stats" id="studentsStats">
+            <div class="stat-item">
+              <div class="stat-number" id="totalStudentsCount">0</div>
+              <div class="stat-label">Jami o'quvchi</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-number stat-boys" id="boysCount">0</div>
+              <div class="stat-label">O'g'il bola</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-number stat-girls" id="girlsCount">0</div>
+              <div class="stat-label">Qiz bola</div>
+            </div>
+          </div>
+
+          <!-- BOYS GROUP -->
+          <div class="gender-group" id="boysGroup">
+            <div class="gender-group-header boys-header">
+              <span class="gender-group-icon">♂</span>
+              <span class="gender-group-title">O'g'il Bolalar</span>
+              <span class="gender-group-count" id="boysGroupCount">0</span>
+            </div>
+            <div class="grid" id="boysGrid"></div>
+          </div>
+
+          <!-- GIRLS GROUP -->
+          <div class="gender-group" id="girlsGroup">
+            <div class="gender-group-header girls-header">
+              <span class="gender-group-icon">♀</span>
+              <span class="gender-group-title">Qiz Bolalar</span>
+              <span class="gender-group-count" id="girlsGroupCount">0</span>
+            </div>
+            <div class="grid" id="girlsGrid"></div>
+          </div>
+
+          <div class="empty-state hidden" id="studentsEmpty">
+            <div class="empty-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <path
+                  d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0z" />
+              </svg>
+            </div>
+            <p>O'quvchilar hali qo'shilmagan</p>
+          </div>
+        </section>
+
+        <!-- ANNOUNCEMENTS SECTION -->
+        <section class="section" id="section-announcements">
+          <div class="announcements-grid" id="announcementsGrid"></div>
+          <div class="empty-state hidden" id="announcementsEmpty">
+            <div class="empty-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <path
+                  d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 1 1 0-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783A4.502 4.502 0 0 0 19.5 12m-9.16 3.84c.26-.988.4-2.02.4-3.084 0-1.064-.14-2.096-.4-3.084m0 6.168a22.502 22.502 0 0 1 0-6.168m0 6.168A22.5 22.5 0 0 0 19.5 12" />
+              </svg>
+            </div>
+            <p>E'lonlar hali qo'shilmagan</p>
+          </div>
+        </section>
+
+        <!-- GALLERY SECTION -->
+        <section class="section" id="section-gallery">
+          <div class="gallery-grid" id="galleryGrid"></div>
+          <div class="empty-state hidden" id="galleryEmpty">
+            <div class="empty-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <path
+                  d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+              </svg>
+            </div>
+            <p>Galereya hali bo'sh</p>
+          </div>
+        </section>
+
+        <!-- COMMENTS SECTION -->
+        <section class="section" id="section-comments">
+          <div class="comments-header-bar">
+            <div class="comments-header-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+              </svg>
+            </div>
+            <div class="comments-header-text">
+              <h3>Izohlar</h3>
+              <p>10A sinf o'quvchilari va ustozlarning izohlari</p>
+            </div>
+            <div class="comments-count-badge" id="commentsCountBadge">0 ta izoh</div>
+          </div>
+
+          <!-- COMMENT FORM -->
+          <div class="comment-form-card">
+            <div class="comment-form-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18">
+                <path d="M12 4.5v15m7.5-7.5h-15" />
+              </svg>
+              Yangi izoh yozing
+            </div>
+            <div class="comment-form-fields">
+              <div class="comment-name-row">
+                <div class="form-group">
+                  <label>Ism</label>
+                  <input type="text" id="commentFirstName" placeholder="Ismingiz" maxlength="40" />
+                </div>
+                <div class="form-group">
+                  <label>Familiya</label>
+                  <input type="text" id="commentLastName" placeholder="Familiyangiz" maxlength="40" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Izoh</label>
+                <textarea id="commentText" placeholder="Izohingizni shu yerga yozing..." rows="3" maxlength="500"></textarea>
+                <div class="char-counter"><span id="commentCharCount">0</span>/500</div>
+              </div>
+              <button class="btn-primary btn-glow comment-submit-btn" id="submitCommentBtn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <path d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12zm0 0h7.5" />
+                </svg>
+                Izoh yuborish
+              </button>
+            </div>
+          </div>
+
+          <!-- COMMENTS LIST -->
+          <div id="commentsList" class="comments-list"></div>
+          <div class="empty-state hidden" id="commentsEmpty">
+            <div class="empty-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                <path d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+              </svg>
+            </div>
+            <p>Hali izohlar yo'q. Birinchi bo'lib izoh qoldiring!</p>
+          </div>
+        </section>
+
+        <!-- SCHEDULE SECTION -->
+        <section class="section" id="section-schedule">
+          <div class="schedule-container" id="scheduleContainer">
+            <div class="schedule-header-bar">
+              <h3>Haftalik dars jadvali</h3>
+              <p>10A sinf uchun dars jadvali</p>
+            </div>
+            <div class="schedule-table-wrap">
+              <table class="schedule-table" id="scheduleTable">
+                <thead>
+                  <tr>
+                    <th>Soat</th>
+                    <th>Dushanba</th>
+                    <th>Seshanba</th>
+                    <th>Chorshanba</th>
+                    <th>Payshanba</th>
+                    <th>Juma</th>
+                    <th>Shanba</th>
+                  </tr>
+                </thead>
+                <tbody id="scheduleBody">
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- ADD MODAL -->
+  <div id="addModal" class="modal-overlay hidden">
+    <div class="modal-box wide">
+      <button class="modal-close" id="closeAddModal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6 6 18M6 6l12 12" />
+        </svg>
+      </button>
+      <h2 class="modal-title" id="addModalTitle">Qo'shish</h2>
+
+      <!-- TEACHER FORM -->
+      <form id="teacherForm" class="add-form hidden">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Ism</label>
+            <input type="text" id="tFirstName" placeholder="Ism" />
+          </div>
+          <div class="form-group">
+            <label>Familiya</label>
+            <input type="text" id="tLastName" placeholder="Familiya" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Fan (Subject)</label>
+          <input type="text" id="tSubject" placeholder="Masalan: Matematika" />
+        </div>
+        <div class="form-group">
+          <label>Rasm</label>
+          <div class="file-upload-area" id="tImgArea">
+            <input type="file" id="tImg" accept="image/*" />
+            <div class="upload-placeholder" id="tImgPlaceholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path
+                  d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+              </svg>
+              <span>Rasm yuklash</span>
+            </div>
+            <img id="tImgPreview" class="img-preview hidden" alt="preview" />
+          </div>
+        </div>
+        <button type="submit" class="btn-primary full-width btn-glow">Saqlash</button>
+      </form>
+
+      <!-- STUDENT FORM -->
+      <form id="studentForm" class="add-form hidden">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Ism</label>
+            <input type="text" id="sFirstName" placeholder="Ism" />
+          </div>
+          <div class="form-group">
+            <label>Familiya</label>
+            <input type="text" id="sLastName" placeholder="Familiya" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Tug'ilgan sana</label>
+            <input type="date" id="sBirthDate" />
+          </div>
+          <div class="form-group">
+            <label>Jinsi</label>
+            <select id="sGender">
+              <option value="">— Tanlang —</option>
+              <option value="male">O'g'il bola</option>
+              <option value="female">Qiz bola</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Rasm</label>
+          <div class="file-upload-area" id="sImgArea">
+            <input type="file" id="sImg" accept="image/*" />
+            <div class="upload-placeholder" id="sImgPlaceholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path
+                  d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+              </svg>
+              <span>Rasm yuklash</span>
+            </div>
+            <img id="sImgPreview" class="img-preview hidden" alt="preview" />
+          </div>
+        </div>
+        <button type="submit" class="btn-primary full-width btn-glow">Saqlash</button>
+      </form>
+
+      <!-- ANNOUNCEMENT FORM -->
+      <form id="announcementForm" class="add-form hidden">
+        <div class="form-group">
+          <label>Sarlavha</label>
+          <input type="text" id="aTitle" placeholder="E'lon sarlavhasi" />
+        </div>
+        <div class="form-group">
+          <label>Matn</label>
+          <textarea id="aDesc" placeholder="E'lon matni..." rows="4"></textarea>
+        </div>
+        <div class="ann-media-tabs">
+          <button type="button" class="ann-tab active" id="tabImg">🖼️ Rasm</button>
+          <button type="button" class="ann-tab" id="tabVideo">📹 Video URL</button>
+        </div>
+        <div class="form-group" id="imgUploadGroup">
+          <label>Rasm (ixtiyoriy)</label>
+          <div class="file-upload-area" id="aImgArea">
+            <input type="file" id="aImg" accept="image/*" />
+            <div class="upload-placeholder" id="aImgPlaceholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path
+                  d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+              </svg>
+              <span>Rasm yuklash</span>
+            </div>
+            <img id="aImgPreview" class="img-preview hidden" alt="preview" />
+          </div>
+        </div>
+        <div class="form-group hidden" id="videoUrlGroup">
+          <label>Video URL (YouTube yoki to'g'ridan-to'g'ri link)</label>
+          <input type="url" id="aVideo" placeholder="https://youtube.com/watch?v=... yoki video.mp4" />
+          <p style="font-size:0.75rem;color:var(--text-secondary);margin-top:4px;">YouTube havolasini yoki video fayl yo'lini kiriting</p>
+        </div>
+        <button type="submit" class="btn-primary full-width btn-glow">Saqlash</button>
+      </form>
+
+      <!-- GALLERY FORM -->
+      <form id="galleryForm" class="add-form hidden">
+        <div class="form-group">
+          <label>Rasm sarlavhasi</label>
+          <input type="text" id="gTitle" placeholder="Masalan: Sinf surati" />
+        </div>
+        <div class="form-group">
+          <label>Rasm</label>
+          <div class="file-upload-area" id="gImgArea">
+            <input type="file" id="gImg" accept="image/*" />
+            <div class="upload-placeholder" id="gImgPlaceholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path
+                  d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+              </svg>
+              <span>Rasm yuklash</span>
+            </div>
+            <img id="gImgPreview" class="img-preview hidden" alt="preview" />
+          </div>
+        </div>
+        <button type="submit" class="btn-primary full-width btn-glow">Saqlash</button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- EDIT MODAL -->
+  <div id="editModal" class="modal-overlay hidden">
+    <div class="modal-box wide">
+      <button class="modal-close" id="closeEditModal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6 6 18M6 6l12 12" />
+        </svg>
+      </button>
+      <h2 class="modal-title" id="editModalTitle">Tahrirlash</h2>
+
+      <!-- EDIT TEACHER FORM -->
+      <form id="editTeacherForm" class="add-form hidden">
+        <input type="hidden" id="etId" />
+        <div class="form-row">
+          <div class="form-group">
+            <label>Ism</label>
+            <input type="text" id="etFirstName" placeholder="Ism" />
+          </div>
+          <div class="form-group">
+            <label>Familiya</label>
+            <input type="text" id="etLastName" placeholder="Familiya" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Fan</label>
+          <input type="text" id="etSubject" placeholder="Masalan: Matematika" />
+        </div>
+        <div class="form-group">
+          <label>Rasm</label>
+          <div class="file-upload-area" id="etImgArea">
+            <input type="file" id="etImg" accept="image/*" />
+            <div class="upload-placeholder" id="etImgPlaceholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path
+                  d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+              </svg>
+              <span>Yangi rasm yuklash</span>
+            </div>
+            <img id="etImgPreview" class="img-preview hidden" alt="preview" />
+          </div>
+        </div>
+        <button type="submit" class="btn-primary full-width btn-glow">Saqlash</button>
+      </form>
+
+      <!-- EDIT STUDENT FORM -->
+      <form id="editStudentForm" class="add-form hidden">
+        <input type="hidden" id="esId" />
+        <div class="form-row">
+          <div class="form-group">
+            <label>Ism</label>
+            <input type="text" id="esFirstName" placeholder="Ism" />
+          </div>
+          <div class="form-group">
+            <label>Familiya</label>
+            <input type="text" id="esLastName" placeholder="Familiya" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Tug'ilgan sana</label>
+            <input type="date" id="esBirthDate" />
+          </div>
+          <div class="form-group">
+            <label>Jinsi</label>
+            <select id="esGender">
+              <option value="">— Tanlang —</option>
+              <option value="male">O'g'il bola</option>
+              <option value="female">Qiz bola</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Rasm</label>
+          <div class="file-upload-area" id="esImgArea">
+            <input type="file" id="esImg" accept="image/*" />
+            <div class="upload-placeholder" id="esImgPlaceholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path
+                  d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+              </svg>
+              <span>Yangi rasm yuklash</span>
+            </div>
+            <img id="esImgPreview" class="img-preview hidden" alt="preview" />
+          </div>
+        </div>
+        <button type="submit" class="btn-primary full-width btn-glow">Saqlash</button>
+      </form>
+
+      <!-- EDIT CLASS TEACHER FORM -->
+      <form id="editCTForm" class="add-form hidden">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Ism</label>
+            <input type="text" id="ctFirstName" placeholder="Ism" />
+          </div>
+          <div class="form-group">
+            <label>Familiya</label>
+            <input type="text" id="ctLastName" placeholder="Familiya" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Fan</label>
+          <input type="text" id="ctSubjectInput" placeholder="Masalan: Matematika" />
+        </div>
+        <div class="form-group">
+          <label>Rasm</label>
+          <div class="file-upload-area" id="ctImgArea">
+            <input type="file" id="ctImg" accept="image/*" />
+            <div class="upload-placeholder" id="ctImgPlaceholder">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path
+                  d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5" />
+              </svg>
+              <span>Rasm yuklash</span>
+            </div>
+            <img id="ctImgPreview" class="img-preview hidden" alt="preview" />
+          </div>
+        </div>
+        <button type="submit" class="btn-primary full-width btn-glow">Saqlash</button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- STUDENT PROFILE MODAL -->
+  <div id="studentProfileModal" class="modal-overlay hidden">
+    <div class="modal-box student-profile-box">
+      <button class="modal-close" id="closeStudentProfile">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18 6 6 18M6 6l12 12" />
+        </svg>
+      </button>
+      <div id="studentProfileContent"></div>
+    </div>
+  </div>
+
+  <!-- CONFIRM MODAL -->
+  <div id="confirmModal" class="modal-overlay hidden">
+    <div class="modal-box narrow">
+      <div class="confirm-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path
+            d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+        </svg>
+      </div>
+      <h3 class="confirm-title">O'chirishni tasdiqlang</h3>
+      <p class="confirm-text">Bu amalni bekor qilib bo'lmaydi. Davom etasizmi?</p>
+      <div class="confirm-actions">
+        <button class="btn-outline" id="confirmCancel">Bekor qilish</button>
+        <button class="btn-danger" id="confirmOk">O'chirish</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMAGE LIGHTBOX -->
+  <div id="lightbox" class="lightbox-overlay hidden">
+    <button class="lightbox-close" id="lightboxClose">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M18 6 6 18M6 6l12 12" />
+      </svg>
+    </button>
+    <div class="lightbox-content">
+      <img id="lightboxImg" src="" alt="Katta rasm" />
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- BACK TO TOP -->
+  <button class="back-to-top hidden" id="backToTop">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M4.5 15.75l7.5-7.5 7.5 7.5" />
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

@@ -100,50 +100,50 @@ const allCareers = [
 
 // Default students data
 const defaultStudents = [
-  { firstName: "Abdjubbarov Abdulaziz", lastName: "Anvar o'g'li", gender: "male", birthDate: "2009-09-19", interests: ["⚽ Futbolchi", "🎮 Gamer"], img: "img/Abdjubbarov Abdulaziz.jpg" },
+  { firstName: "Abdjubbarov Abdulaziz", lastName: "Anvar o'g'li", gender: "male", birthDate: "2009-09-19", interests: ["⚽ Futbolchi", "🎮 Gamer"], img: "Abdjubbarov Abdulaziz.jpg" },
   { firstName: "Abdurashitova Mubina", lastName: "Jamshid qizi", gender: "female", birthDate: "2009-07-15", interests: ["📖 Kitobxon", "🎨 Rassom"] },
-  { firstName: "Abduvoitov Akromjon", lastName: "Oybek o'g'li", gender: "male", birthDate: "2009-06-21", interests: ["🏃 Sportchi", "💻 Dasturchi"], img: "img/Akrom.jpg" },
-  { firstName: "Aminov Abdulloh", lastName: "Elmurodovich", gender: "male", birthDate: "2010-01-22", interests: ["📚 Zo'r o'quvchi", "🕌 Hofiz"], img: "img/Abdulloh.jpg" },
+  { firstName: "Abduvoitov Akromjon", lastName: "Oybek o'g'li", gender: "male", birthDate: "2009-06-21", interests: ["🏃 Sportchi", "💻 Dasturchi"], img: "Akrom.jpg" },
+  { firstName: "Aminov Abdulloh", lastName: "Elmurodovich", gender: "male", birthDate: "2010-01-22", interests: ["📚 Zo'r o'quvchi", "🕌 Hofiz"], img: "Abdulloh.jpg" },
   { firstName: "Aripjonov Shukrullo", lastName: "Muzaffar o'g'li", gender: "male", birthDate: "2010-02-03", interests: ["⚽ Futbolchi", "🎵 Musiqachi"] },
   { firstName: "Erkinov Bobur", lastName: "Bahriddin o'g'li", gender: "male", birthDate: "2009-09-12", interests: ["🏀 Basketbolchi", "📐 Matematik"] },
   { firstName: "Erkinov Muhammadali", lastName: "Sherzod o'g'li", gender: "male", birthDate: "2009-09-13", interests: ["🎮 Gamer", "🔬 Olim"] },
-  { firstName: "Erkinov MuhammadRo'za", lastName: "Shuxrat o'g'li", gender: "male", birthDate: "2009-05-05", interests: ["⚽ Futbolchi", "🏊 Suzuvchi"], img: "img/Erkinov MuhammadRo'za.jpg" },
-  { firstName: "Eniyazov Dilshod", lastName: "A'zamjonovich", gender: "male", birthDate: "2009-05-29", interests: ["💻 Dasturchi", "🎵 Musiqachi"], img: "img/Erniyozov Dilshod.jpg" },
-  { firstName: "Eshmuratov Samir", lastName: "Shodirovich", gender: "male", birthDate: "2009-12-30", interests: ["🏃 Sportchi", "📖 Kitobxon"], img: "img/Eshmurotov Samir.jpg" },
+  { firstName: "Erkinov MuhammadRo'za", lastName: "Shuxrat o'g'li", gender: "male", birthDate: "2009-05-05", interests: ["⚽ Futbolchi", "🏊 Suzuvchi"], img: "Erkinov MuhammadRo'za.jpg" },
+  { firstName: "Eniyazov Dilshod", lastName: "A'zamjonovich", gender: "male", birthDate: "2009-05-29", interests: ["💻 Dasturchi", "🎵 Musiqachi"], img: "Erniyozov Dilshod.jpg" },
+  { firstName: "Eshmuratov Samir", lastName: "Shodirovich", gender: "male", birthDate: "2009-12-30", interests: ["🏃 Sportchi", "📖 Kitobxon"], img: "Eshmurotov Samir.jpg" },
   { firstName: "Gafforov Kamronbek", lastName: "Laziz o'g'li", gender: "male", birthDate: "2010-04-17", interests: ["⚽ Futbolchi", "🎨 Rassom"] },
   { firstName: "Hakimova Saida", lastName: "Kazramonovna", gender: "female", birthDate: "2009-10-01", interests: ["📖 Kitobxon", "🎭 Aktyor"] },
-  { firstName: "Iskandarov Fayozbek", lastName: "Toir o'g'li", gender: "male", birthDate: "2009-10-25", interests: ["💻 Dasturchi", "🎮 Gamer", "🏃 Sportchi"], img: "img/Iskandarov Fayozbek.jpg" },
+  { firstName: "Iskandarov Fayozbek", lastName: "Toir o'g'li", gender: "male", birthDate: "2009-10-25", interests: ["💻 Dasturchi", "🎮 Gamer", "🏃 Sportchi"], img: "Iskandarov Fayozbek.jpg" },
   { firstName: "Ismoilova Robiya", lastName: "Akbar qizi", gender: "female", birthDate: "2010-07-10", interests: ["🎨 Rassom", "📚 Zo'r o'quvchi"] },
   { firstName: "Ma'murova Durdona", lastName: "Dilshod qizi", gender: "female", birthDate: "2009-11-15", interests: ["📖 Kitobxon", "🎵 Musiqachi"] },
-  { firstName: "Maxamatimov Bexruzbek", lastName: "Faxrot o'g'li", gender: "male", birthDate: "2009-06-15", interests: ["🏃 Sportchi", "⚽ Futbolchi"], img: "img/Maxamatimov Bexruzbek.jpg" },
-  { firstName: "Maxkamov Abubakr", lastName: "Bahodirjon o'g'li", gender: "male", birthDate: "2009-07-07", interests: ["📚 Zo'r o'quvchi", "🕌 Hofiz"], img: "img/Abu- Bakr.jpg" },
+  { firstName: "Maxamatimov Bexruzbek", lastName: "Faxrot o'g'li", gender: "male", birthDate: "2009-06-15", interests: ["🏃 Sportchi", "⚽ Futbolchi"], img: "Maxamatimov Bexruzbek.jpg" },
+  { firstName: "Maxkamov Abubakr", lastName: "Bahodirjon o'g'li", gender: "male", birthDate: "2009-07-07", interests: ["📚 Zo'r o'quvchi", "🕌 Hofiz"], img: "Abu- Bakr.jpg" },
   { firstName: "Mirmuxammadiev Sardor", lastName: "Jaloliddinovich", gender: "male", birthDate: "2009-05-06", interests: ["⚽ Futbolchi", "🎮 Gamer"] },
-  { firstName: "Mo'minov Ibrohim", lastName: "Orifjon o'g'li", gender: "male", birthDate: "2009-08-05", interests: ["📐 Matematik", "💻 Dasturchi"], img: "img/Mominov Ibrohim.jpg" },
+  { firstName: "Mo'minov Ibrohim", lastName: "Orifjon o'g'li", gender: "male", birthDate: "2009-08-05", interests: ["📐 Matematik", "💻 Dasturchi"], img: "Mominov Ibrohim.jpg" },
   { firstName: "Murotov Diyorbek", lastName: "Azizjon o'g'li", gender: "male", birthDate: "2015-04-07", interests: ["⚽ Futbolchi", "🎵 Musiqachi"] },
-  { firstName: "Namozboyev Sevinch", lastName: "Isroil o'g'li", gender: "female", birthDate: "2009-07-15", interests: ["🏃 Sportchi", "🔬 Olim"], img: "img/Sevinch.jpg" },
+  { firstName: "Namozboyev Sevinch", lastName: "Isroil o'g'li", gender: "female", birthDate: "2009-07-15", interests: ["🏃 Sportchi", "🔬 Olim"], img: "Sevinch.jpg" },
   { firstName: "Nosirov Firdavs", lastName: "Mansur o'g'li", gender: "male", birthDate: "2009-07-29", interests: ["💻 Dasturchi", "📐 Matematik"] },
-  { firstName: "Nosirova Shaxrizoda", lastName: "Fayoziddin qizi", gender: "female", birthDate: "2009-08-01", interests: ["🎨 Rassom", "📖 Kitobxon"], img: "img/Nosirova Shaxrizoda.jpg" },
+  { firstName: "Nosirova Shaxrizoda", lastName: "Fayoziddin qizi", gender: "female", birthDate: "2009-08-01", interests: ["🎨 Rassom", "📖 Kitobxon"], img: "Nosirova Shaxrizoda.jpg" },
   { firstName: "Obidova Jamila", lastName: "Xolmurod qizi", gender: "female", birthDate: "2009-12-12", interests: ["🎭 Aktyor", "🎵 Musiqachi"] },
-  { firstName: "Otaqulova Orastagul", lastName: "Olim qizi", gender: "female", birthDate: "2009-07-25", interests: ["📚 Zo'r o'quvchi", "🎨 Rassom"], img: "img/Otaqulova Orastagul.jpg" },
-  { firstName: "Qambaraliyev Diyorbek", lastName: "Mirzohid o'g'li", gender: "male", birthDate: "2009-04-04", interests: ["⚽ Futbolchi", "🏃 Sportchi"], img: "img/Diyor Qambaraliev.jpg" },
+  { firstName: "Otaqulova Orastagul", lastName: "Olim qizi", gender: "female", birthDate: "2009-07-25", interests: ["📚 Zo'r o'quvchi", "🎨 Rassom"], img: "Otaqulova Orastagul.jpg" },
+  { firstName: "Qambaraliyev Diyorbek", lastName: "Mirzohid o'g'li", gender: "male", birthDate: "2009-04-04", interests: ["⚽ Futbolchi", "🏃 Sportchi"], img: "Diyor Qambaraliev.jpg" },
   { firstName: "Qurbonmurodova Malika", lastName: "Ikromovna", gender: "female", birthDate: "2009-06-13", interests: ["📖 Kitobxon", "🎵 Musiqachi"] },
-  { firstName: "Qutbiyev Shoxtemur", lastName: "Zikridin o'g'li", gender: "male", birthDate: "2009-05-15", interests: ["🏃 Sportchi", "🎮 Gamer"], img: "img/Qutbiyev Shoxtemur.jpg" },
-  { firstName: "Rajabov Komron", lastName: "Ahadovich", gender: "male", birthDate: "2010-03-26", interests: ["⚽ Futbolchi", "💻 Dasturchi"], img: "img/Rajabov Kamron.jpg" },
+  { firstName: "Qutbiyev Shoxtemur", lastName: "Zikridin o'g'li", gender: "male", birthDate: "2009-05-15", interests: ["🏃 Sportchi", "🎮 Gamer"], img: "Qutbiyev Shoxtemur.jpg" },
+  { firstName: "Rajabov Komron", lastName: "Ahadovich", gender: "male", birthDate: "2010-03-26", interests: ["⚽ Futbolchi", "💻 Dasturchi"], img: "Rajabov Kamron.jpg" },
   { firstName: "Rustamova Durdona", lastName: "Ruslanovna", gender: "female", birthDate: "2010-08-01", interests: ["🎨 Rassom", "📚 Zo'r o'quvchi"] },
   { firstName: "Rustamova Ruxsora", lastName: "Ruslanovna", gender: "female", birthDate: "2010-06-10", interests: ["📖 Kitobxon", "🎭 Aktyor"] },
-  { firstName: "Sobirov Sardor", lastName: "Sherzod o'g'li", gender: "male", birthDate: "2009-12-19", interests: ["🏃 Sportchi", "📐 Matematik"], img: "img/Sobirov Sardor.jpg" },
-  { firstName: "Sotvoldiyeva Manzura", lastName: "", gender: "female", birthDate: "2009-06-03", interests: ["🎵 Musiqachi", "📖 Kitobxon"], img: "img/Manzura.jpg" },
+  { firstName: "Sobirov Sardor", lastName: "Sherzod o'g'li", gender: "male", birthDate: "2009-12-19", interests: ["🏃 Sportchi", "📐 Matematik"], img: "Sobirov Sardor.jpg" },
+  { firstName: "Sotvoldiyeva Manzura", lastName: "", gender: "female", birthDate: "2009-06-03", interests: ["🎵 Musiqachi", "📖 Kitobxon"], img: "Manzura.jpg" },
   { firstName: "Toychiyeva Sultonoy", lastName: "Murodjon qizi", gender: "female", birthDate: "2009-06-18", interests: ["🎨 Rassom", "🎭 Aktyor"] },
   { firstName: "Turdiyeva Xomiya", lastName: "Baxtiyor qizi", gender: "female", birthDate: "2009-05-01", interests: ["📚 Zo'r o'quvchi", "🎵 Musiqachi"] },
   { firstName: "Tursatov Shaxzod", lastName: "Xakimovich", gender: "male", birthDate: "2009-02-01", interests: ["💻 Dasturchi", "🎮 Gamer"] },
   { firstName: "Xamitboyev Saloxiddin", lastName: "Sunnatilla o'g'li", gender: "male", birthDate: "2010-06-24", interests: ["⚽ Futbolchi", "🏃 Sportchi"] },
-  { firstName: "Shaydullayeva Latofat", lastName: "Muzaffar qizi", gender: "female", birthDate: "2010-03-30", interests: ["📖 Kitobxon", "🎨 Rassom"], img: "img/Shaydullayeva Latofat.JPG" },
-  { firstName: "Shodiyeva Muxlisa", lastName: "Shuxratovna", gender: "female", birthDate: "2009-09-21", interests: ["🎵 Musiqachi", "📚 Zo'r o'quvchi"], img: "img/Shodiyeva Muxlisa.jpg" },
-  { firstName: "Shokirova Madina", lastName: "Sheromon qizi", gender: "female", birthDate: "2010-02-25", interests: ["🎭 Aktyor", "🎨 Rassom"], img: "img/Shokirova Madina.jpg" },
+  { firstName: "Shaydullayeva Latofat", lastName: "Muzaffar qizi", gender: "female", birthDate: "2010-03-30", interests: ["📖 Kitobxon", "🎨 Rassom"], img: "Shaydullayeva Latofat.JPG" },
+  { firstName: "Shodiyeva Muxlisa", lastName: "Shuxratovna", gender: "female", birthDate: "2009-09-21", interests: ["🎵 Musiqachi", "📚 Zo'r o'quvchi"], img: "Shodiyeva Muxlisa.jpg" },
+  { firstName: "Shokirova Madina", lastName: "Sheromon qizi", gender: "female", birthDate: "2010-02-25", interests: ["🎭 Aktyor", "🎨 Rassom"], img: "Shokirova Madina.jpg" },
   { firstName: "Axrorov O'zodbek", lastName: "Asqar o'g'li", gender: "male", birthDate: "2009-10-28", interests: ["🏃 Sportchi", "💻 Dasturchi"] },
   { firstName: "Azamatova Nargiza", lastName: "Xusniddin qizi", gender: "female", birthDate: "2009-04-02", interests: ["📖 Kitobxon", "🔬 Olim"] },
-  { firstName: "Ximmatova Feruzabonu", lastName: "Muxtor qizi", gender: "female", birthDate: "2009-11-12", interests: ["🎵 Musiqachi", "🎨 Rassom"], img: "img/Feruza.jpg" },
-  { firstName: "Dilnura", lastName: "", gender: "female", birthDate: "2009-06-13", interests: ["Tilshunos"], img: "img/Dilnura.jpg" }
+  { firstName: "Ximmatova Feruzabonu", lastName: "Muxtor qizi", gender: "female", birthDate: "2009-11-12", interests: ["🎵 Musiqachi", "🎨 Rassom"], img: "Feruza.jpg" },
+  { firstName: "Dilnura", lastName: "", gender: "female", birthDate: "2009-06-13", interests: ["Tilshunos"], img: "Dilnura.jpg" }
 ];
 
 // Default teachers data
@@ -211,14 +211,14 @@ const defaultAnnouncements = [
   {
     title: "Sinf yangiliklari",
     desc: "10A sinf o'quvchichisi Shodiyeva Muxlisa Sertifikat oldi.",
-    img: "image elon/Shodiyeva Muxlisa_sertificate.jpg",
+    img: "Shodiyeva Muxlisa_sertificate.jpg",
     video: "",
     date: new Date().toISOString()
   },
   {
     title: "Sinf yangiliklari",
     desc: "10A sinf o'quvchisi Mirmuxammadiev Sardor Sertifikat oldi.",
-    img: "image elon/Mirmuxammadiev Sardor_IElTS.jpg",
+    img: "Mirmuxammadiev Sardor_IElTS.jpg",
     video: "",
     date: new Date().toISOString()
   },
@@ -226,7 +226,7 @@ const defaultAnnouncements = [
     title: "Sinf yangiliklari",
     desc: "Mirmuxammadiev Sardor intervyusi.",
     img: "",
-    video: "image elon/Mirmuxammadiev Sardor_interviuv.mp4",
+    video: "Mirmuxammadiev Sardor_interviuv.mp4",
     date: new Date().toISOString()
   }
 ];
@@ -1030,7 +1030,7 @@ function renderClassTeacher() {
     ctAvatar.onclick = () => openLightbox(ct.img, `${ct.firstName || ''} ${ct.lastName || ''} — Sinf rahbari`);
   } else {
     // Default: Nurmatova Dilobar rasmini ishlatamiz
-    const defaultImg = 'image elon/Nurmatova Dilobar.jpg';
+    const defaultImg = 'Nurmatova Dilobar.jpg';
     ctAvatar.innerHTML = `
       <img src="${defaultImg}" alt="Sinf rahbari"
         style="width:100%;height:100%;object-fit:cover;"

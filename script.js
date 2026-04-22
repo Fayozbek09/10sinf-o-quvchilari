@@ -218,7 +218,7 @@ const defaultAnnouncements = [
   {
     title: "Sinf yangiliklari",
     desc: "10A sinf o'quvchisi Mirmuxammadiev Sardor Sertifikat oldi.",
-    img: "Mirmuxammadiev Sardor_IElTS.jpg",
+    img: "Mirmuxammadiev Sardor_IELTS.jpg",
     video: "",
     date: new Date().toISOString()
   },
